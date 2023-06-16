@@ -9,22 +9,40 @@ import Foundation
 
 func main() {
     var scanner = Scanner()
-    let p = scanner.read(String.self)
-    let q = scanner.read(String.self)
-    let X = [
-        "A": 0,
-        "B": 3,
-        "C": 4,
-        "D": 8,
-        "E": 9,
-        "F": 14,
-        "G": 23,
-    ]
-    print(abs(X[q]! - X[p]!))
+    let H = scanner.read(Int.self)
+    let W = scanner.read(Int.self)
+    let S = scanner.read(String.self, count: H).map(Array.init)
+    var minX = Int.max
+    var maxX = Int.min
+    var minY = Int.max
+    var maxY = Int.min
+    for i in 0 ..< H {
+        for j in 0 ..< W {
+            if S[i][j] == "#" {
+                minY = min(minY, i)
+                maxY = max(maxY, i)
+                minX = min(minX, j)
+                maxX = max(maxX, j)
+            }
+        }
+    }
+    for i in minY ... maxY {
+        for j in minX ... maxX {
+            if S[i][j] == "." {
+                print(i + 1, j + 1)
+            }
+        }
+    }
 }
 
 main()
 
+/**
+ let str = scanner.read(String.self)
+ let int = scanner.read(Int.self)
+ let lists = scanner.read(Int.self, cont: {配列の大きさ})
+ let field = scanner.read(String.self, count: {2次配列の大きさ}).map(Array.init)
+ */
 struct Scanner {
     private var tokens = [String]()
     private var index = 0
