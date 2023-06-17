@@ -9,7 +9,17 @@ import Foundation
 
 func main() {
     var scanner = Scanner()
-    
+    var N = scanner.read(Int.self)
+    var S = scanner.read(String.self)
+
+    var array = Array(S)
+    var ans = ""
+    for i in 0..<N {
+        ans += String(array[i])
+        ans += String(array[i])
+    }
+    print(ans)
+
 }
 
 main()
