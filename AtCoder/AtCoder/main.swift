@@ -9,22 +9,14 @@ import Foundation
 
 func main() {
     var scanner = Scanner()
-    let p = scanner.read(String.self)
-    let q = scanner.read(String.self)
-    let X = [
-        "A": 0,
-        "B": 3,
-        "C": 4,
-        "D": 8,
-        "E": 9,
-        "F": 14,
-        "G": 23,
-    ]
-    print(abs(X[q]! - X[p]!))
+    
 }
 
 main()
 
+// let str = scanner.read(String.self)
+// let int = scanner.read(Int.self)
+// let lists = scanner.read(String.self, count: {配列数})
 struct Scanner {
     private var tokens = [String]()
     private var index = 0
