@@ -9,17 +9,24 @@ import Foundation
 
 func main() {
     var scanner = Scanner()
-    var N = 64
-    var lists = scanner.read(String.self, count: N)
+    let N = scanner.read(Int.self)
+    let lists = scanner.read(String.self, count: N*3)
 
-    var niSinnsuu = ""
-
-    for str in lists.reversed() {
-        niSinnsuu = niSinnsuu + str
+    var points:[String: Int] = [:]
+    var newLists:[String] = []
+    for item in lists{
+        if points.keys.contains(item) {
+            points[item]! += 1
+            if points[item] == 2 {
+                newLists.append(item)
+            }
+        }else{
+            points.updateValue(1, forKey: item)
+        }
     }
-
-    var ans = UInt64(niSinnsuu, radix: 2)
-    print(ans!)
+    for item in newLists {
+        print(item + " ", terminator: "")
+    }
 }
 
 main()
