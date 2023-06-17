@@ -10,17 +10,16 @@ import Foundation
 func main() {
     var scanner = Scanner()
     var N = 64
-    var list = scanner.read(String.self, count: N)
-    var newList = list.reversed()
+    var lists = scanner.read(String.self, count: N)
 
     var niSinnsuu = ""
-    for str in newList {
-        niSinnsuu += str
+
+    for str in lists.reversed() {
+        niSinnsuu = niSinnsuu + str
     }
-    var ans = Int(niSinnsuu, radix: 2)!
 
-    print(ans)
-
+    var ans = UInt64(niSinnsuu, radix: 2)
+    print(ans!)
 }
 
 main()
