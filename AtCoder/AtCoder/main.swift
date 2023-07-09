@@ -3,35 +3,32 @@ import Foundation
 func main() {
     var scanner = Scanner()
     let N = scanner.read(Int.self)
-    let fields = scanner.read(String.self, count: N).map(Array.init)
+    let K = scanner.read(Int.self)
 
-    for i in 0..<N{
-        var ans = ""
-        for j in 0..<N{
-            if i == 0{
-                if j == 0{
-                    ans += fields[1][0].description
-                }else{
-                    ans += fields[i][j-1].description
-                }
-            }else if i == N-1{
-                if j == N-1{
-                    ans += fields[N-2][N-1].description
-                }else{
-                    ans += fields[N-1][j+1].description
-                }
-            }else{
-                if j == 0 {
-                    ans += fields[i+1][0].description
-                }else if j == N-1{
-                    ans += fields[i-1][N-1].description
-                }else{
-                    ans += fields[i][j].description
-                }
-            }
+
+    var total = 0
+    var pair : [(Int,Int)] = []
+
+    for _ in 0..<N{
+        let day = scanner.read(Int.self)
+        let num = scanner.read(Int.self)
+        pair.append((day,num))
+        total += num
+    }
+
+    if total <= K {
+        print(1)
+        return
+    }
+
+    pair.sort{ $0.0 < $1.0 }
+
+    for item in pair {
+        total -= item.1
+        if total <= K {
+            print(item.0 + 1)
+            break
         }
-
-        print(ans)
     }
 }
 
