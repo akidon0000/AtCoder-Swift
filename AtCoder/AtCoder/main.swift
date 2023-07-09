@@ -2,24 +2,15 @@ import Foundation
 
 func main() {
     var scanner = Scanner()
-    let N = scanner.read(Int.self)
-    let lists = scanner.read(String.self, count: N*3)
+    let A = scanner.read(Int.self)
+    let B = scanner.read(Int.self)
 
-    var points:[String: Int] = [:]
-    var newLists:[String] = []
-    for item in lists{
-        if points.keys.contains(item) {
-            points[item]! += 1
-            if points[item] == 2 {
-                newLists.append(item)
-            }
-        }else{
-            points.updateValue(1, forKey: item)
-        }
+    if A+1 == B && A%3 != 0 {
+        print("Yes")
+    }else{
+        print("No")
     }
-    for item in newLists {
-        print(item + " ", terminator: "")
-    }
+
 }
 
 main()
@@ -27,7 +18,7 @@ main()
 // let str = scanner.read(String.self)
 // let int = scanner.read(Int.self)
 // let lists = scanner.read(String.self, count: {配列数})
-// let field = scanner.read(String.self, count: {2次配列の大きさ}).map(Array.init)
+// let fields = scanner.read(String.self, count: {2次配列の大きさ}).map(Array.init)
 struct Scanner {
     private var tokens = [String]()
     private var index = 0
