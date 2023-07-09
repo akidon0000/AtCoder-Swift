@@ -2,15 +2,37 @@ import Foundation
 
 func main() {
     var scanner = Scanner()
-    let A = scanner.read(Int.self)
-    let B = scanner.read(Int.self)
+    let N = scanner.read(Int.self)
+    let fields = scanner.read(String.self, count: N).map(Array.init)
 
-    if A+1 == B && A%3 != 0 {
-        print("Yes")
-    }else{
-        print("No")
+    for i in 0..<N{
+        var ans = ""
+        for j in 0..<N{
+            if i == 0{
+                if j == 0{
+                    ans += fields[1][0].description
+                }else{
+                    ans += fields[i][j-1].description
+                }
+            }else if i == N-1{
+                if j == N-1{
+                    ans += fields[N-2][N-1].description
+                }else{
+                    ans += fields[N-1][j+1].description
+                }
+            }else{
+                if j == 0 {
+                    ans += fields[i+1][0].description
+                }else if j == N-1{
+                    ans += fields[i-1][N-1].description
+                }else{
+                    ans += fields[i][j].description
+                }
+            }
+        }
+
+        print(ans)
     }
-
 }
 
 main()
